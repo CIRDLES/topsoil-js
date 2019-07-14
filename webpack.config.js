@@ -5,7 +5,7 @@ module.exports = {
     path: __dirname + "/dist",
     filename: "topsoil.js",
     library: "topsoil",
-    libraryTarget: "var",
+    libraryTarget: "commonjs2",
     libraryExport: "default"
   },
   devtool: "source-map",

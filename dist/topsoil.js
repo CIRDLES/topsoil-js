@@ -15312,8 +15312,8 @@ class AbstractPlot {
             .attr("stroke-width", "2px");
         this.featureLayer = this.canvas.append("g");
         this.dataLayer = this.canvas.append("g");
-        this.root.addEventListener("resize", () => this.update());
-        window.addEventListener("resize", () => this.update());
+        this.root.addEventListener("resize", () => this.update(), true);
+        window.addEventListener("resize", () => this.update(), true);
     }
     get data() {
         return this._data;

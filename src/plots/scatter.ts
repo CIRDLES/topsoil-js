@@ -94,7 +94,15 @@ export default class ScatterPlot extends AbstractPlot {
       .y(this.y.scale);
     this.zoom.on("zoom", () => {
       this.update();
-      this.onZoom(this);
+      const {
+        x: {
+          scale: xScale
+        },
+        y: {
+          scale: yScale
+        }
+      } = this;
+      this.onZoom([xScale.domain(), yScale.domain()]);
     });
     this.canvas.call(this.zoom);
 

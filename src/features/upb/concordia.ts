@@ -147,7 +147,7 @@ export class WetherillConcordia extends ConcordiaPlotFeature {
           path,
           wetherill.upperEnvelope,
           upperMinAge,
-          upperMaxAge,
+          maxAge,   // Used instead of upperMaxAge to avoid blowout at end of line
           xScale,
           yScale
         );

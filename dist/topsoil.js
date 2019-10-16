@@ -14398,10 +14398,28 @@ class McLeanRegression {
             lowerEnvelope.attr("d", lineGenerator(this.envelopeLowerBound));
             upperEnvelope.attr("d", lineGenerator(this.envelopeUpperBound));
         }
+        // Draw info box
+        let info = plot.displayContainer.select("." + McLeanRegression.INFO_CLASS);
+        if (info.empty()) {
+            info = plot.displayContainer.append("text")
+                .attr("class", McLeanRegression.INFO_CLASS)
+                .attr("font-family", "sans-serif")
+                .attr("font-size", "14px")
+                .attr("x", 0)
+                .attr("y", -20)
+                .attr("fill", "black");
+        }
+        info.text("Regression slope: " + this.slope);
+        let infoWidth = info.node().getBBox().width;
+        info
+            .attr("x", (plot.canvasWidth - 30) - infoWidth);
     }
     undraw(plot) {
         const layerToDrawOn = plots_1.findLayer(plot, plots_1.Feature.MCLEAN_REGRESSION);
         layerToDrawOn.selectAll("." + McLeanRegression.LINE_CLASS).remove();
+        layerToDrawOn.selectAll("." + McLeanRegression.UPPER_ENVELOPE_CLASS).remove();
+        layerToDrawOn.selectAll("." + McLeanRegression.LOWER_ENVELOPE_CLASS).remove();
+        plot.displayContainer.selectAll("." + McLeanRegression.INFO_CLASS).remove();
     }
     calcSav(savString) {
         let matrix = [];
@@ -14424,6 +14442,7 @@ class McLeanRegression {
 McLeanRegression.LINE_CLASS = "mclean-line";
 McLeanRegression.UPPER_ENVELOPE_CLASS = "mclean-upper-envelope";
 McLeanRegression.LOWER_ENVELOPE_CLASS = "mclean-lower-envelope";
+McLeanRegression.INFO_CLASS = "mclean-info";
 exports.McLeanRegression = McLeanRegression;
 const lineGenerator = d3.svg.line()
     .interpolate("cardinal")

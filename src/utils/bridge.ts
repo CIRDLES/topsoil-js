@@ -11,6 +11,7 @@ export interface RegressionBridge {
   getIntercept(): number;
   getVectorX(): number;
   getSlope(): number;
+  getRoundedSlope(digits: number): number;
   getV(): string;
   getSav(): string;
 }

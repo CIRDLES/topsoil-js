@@ -11,13 +11,14 @@ function makePlot() {
     POINTS_FILL,
     ELLIPSES,
     ELLIPSES_FILL,
+    ERROR_BARS,
+    ERROR_BARS_FILL,
     CONCORDIA_TYPE,
     CONCORDIA_LINE,
     CONCORDIA_ENVELOPE,
-    ERROR_BARS,
   } = topsoil.Option;
   const data = [
-    { [LABEL]: "row1", [SELECTED]: true, [VISIBLE]: false, [X]: "27.9", [SIGMA_X]: "1.3", [Y]: "0.71", [SIGMA_Y]: "0.02", [RHO]: "0.89" }
+    { [LABEL]: "row1", [SELECTED]: true, [VISIBLE]: true, [X]: 29.165688743, [SIGMA_X]: 1.519417676, [Y]: 0.712165893, [SIGMA_Y]: 1.395116767, [RHO]: 0.918191745 }
   ];
   
   const options = {
@@ -30,10 +31,11 @@ function makePlot() {
     [POINTS_FILL]: "#4682b4",
     [ELLIPSES]: false,
     [ELLIPSES_FILL]: "#ff0000",
+    [ERROR_BARS]: false,
+    [ERROR_BARS_FILL]: "#000000",
     [CONCORDIA_TYPE]: "wetherill",
-    [CONCORDIA_LINE]: true,
-    [CONCORDIA_ENVELOPE]: true,
-    [ERROR_BARS]: true,
+    [CONCORDIA_LINE]: false,
+    [CONCORDIA_ENVELOPE]: false,
   }
 
   const Feature = topsoil.Feature;
@@ -54,7 +56,7 @@ function makePlot() {
 const plot = makePlot();
 Object.values(topsoil.Option).forEach(option => {
   const element = document.getElementById(option);
-  if (element) {
+  if (element && plot.options[option]) {
     if (element.type === "checkbox") element.checked = plot.options[option];
     else element.value = plot.options[option];
   }
@@ -78,5 +80,8 @@ plot.resize();
 function setOption(event) {
   const control = event.target;
   const option = topsoil.Option[control.name.toUpperCase()];
-  plot.options = Object.assign(plot.options, { [option]: control.value });
+  let value;
+  if (control.type === "checkbox") value = Boolean(control.checked);
+  else value = control.value;
+  plot.options = Object.assign(plot.options, { [option]: value });
 }

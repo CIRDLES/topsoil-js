@@ -48,6 +48,7 @@ export const ErrorBars = {
     const strokeWidth = (opacity < 1) ? 2 : 1;
 
     unctBars.selectAll("." + H_LINE_CLASS)
+      .data((d) => [d])
       .attr("x1", d => xScale(d.x - (uncertainty * d.sigma_x)))
       .attr("y1", d => yScale(d.y))
       .attr("x2", d => xScale(d.x + (uncertainty * d.sigma_x)))
@@ -57,6 +58,7 @@ export const ErrorBars = {
         return d.selected ? fill : "gray"
       });
     unctBars.selectAll("." + V_LINE_CLASS)
+      .data((d) => [d])
       .attr("x1", d => xScale(d.x))
       .attr("y1", d => yScale(d.y - (uncertainty * d.sigma_y)))
       .attr("x2", d => xScale(d.x))
@@ -66,6 +68,7 @@ export const ErrorBars = {
         return d.selected ? fill : "gray"
       });
     unctBars.selectAll("." + T_CAP_CLASS)
+      .data((d) => [d])
       .attr("x1", d => xScale(d.x - 0.2 * (uncertainty * d.sigma_x)))
       .attr("y1", d => yScale(d.y + (uncertainty * d.sigma_y)))
       .attr("x2", d => xScale(d.x + 0.2 * (uncertainty * d.sigma_x)))
@@ -75,6 +78,7 @@ export const ErrorBars = {
         return d.selected ? fill : "gray"
       });
     unctBars.selectAll("." + R_CAP_CLASS)
+      .data((d) => [d])
       .attr("x1", d => xScale(d.x + (uncertainty * d.sigma_x)))
       .attr("y1", d => yScale(d.y - 0.2*(uncertainty * d.sigma_y)))
       .attr("x2", d => xScale(d.x + (uncertainty * d.sigma_x)))
@@ -84,6 +88,7 @@ export const ErrorBars = {
         return d.selected ? fill : "gray"
       });
     unctBars.selectAll("." + B_CAP_CLASS)
+      .data((d) => [d])
       .attr("x1", d => xScale(d.x - 0.2 * (uncertainty * d.sigma_x)))
       .attr("y1", d => yScale(d.y - (uncertainty * d.sigma_y)))
       .attr("x2", d => xScale(d.x + 0.2 * (uncertainty * d.sigma_x)))
@@ -93,6 +98,7 @@ export const ErrorBars = {
         return d.selected ? fill : "gray"
       });
     unctBars.selectAll("." + L_CAP_CLASS)
+      .data((d) => [d])
       .attr("x1", d => xScale(d.x - (uncertainty * d.sigma_x)))
       .attr("y1", d => yScale(d.y - 0.2*(uncertainty * d.sigma_y)))
       .attr("x2", d => xScale(d.x - (uncertainty * d.sigma_x)))

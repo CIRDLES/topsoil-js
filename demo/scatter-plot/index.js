@@ -16,6 +16,7 @@ function makePlot() {
     CONCORDIA_TYPE,
     CONCORDIA_LINE,
     CONCORDIA_ENVELOPE,
+    SHOW_UNINCLUDED
   } = topsoil.Option;
   const data = [
     { 
@@ -217,6 +218,7 @@ function makePlot() {
     [CONCORDIA_TYPE]: "wetherill",
     [CONCORDIA_LINE]: false,
     [CONCORDIA_ENVELOPE]: false,
+    [SHOW_UNINCLUDED]: true,
   }
 
   const Feature = topsoil.Feature;

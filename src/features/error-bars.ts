@@ -53,6 +53,7 @@ export const ErrorBars = {
       .attr("y1", d => yScale(d.y))
       .attr("x2", d => xScale(d.x + (uncertainty * d.sigma_x)))
       .attr("y2", d => yScale(d.y))
+      .attr("opacity", d => d.selected || plot.options.show_unincluded ? opacity || 1 : 0)
       .attr("stroke-width", strokeWidth)
       .attr("stroke", d => {
         return d.selected ? fill : "gray"
@@ -63,6 +64,7 @@ export const ErrorBars = {
       .attr("y1", d => yScale(d.y - (uncertainty * d.sigma_y)))
       .attr("x2", d => xScale(d.x))
       .attr("y2", d => yScale(d.y + (uncertainty * d.sigma_y)))
+      .attr("opacity", d => d.selected || plot.options.show_unincluded ? opacity || 1 : 0)
       .attr("stroke-width", strokeWidth)
       .attr("stroke", d => {
         return d.selected ? fill : "gray"
@@ -73,6 +75,7 @@ export const ErrorBars = {
       .attr("y1", d => yScale(d.y + (uncertainty * d.sigma_y)))
       .attr("x2", d => xScale(d.x + 0.2 * (uncertainty * d.sigma_x)))
       .attr("y2", d => yScale(d.y + (uncertainty * d.sigma_y)))
+      .attr("opacity", d => d.selected || plot.options.show_unincluded ? opacity || 1 : 0)
       .attr("stroke-width", strokeWidth)
       .attr("stroke", d => {
         return d.selected ? fill : "gray"
@@ -83,6 +86,7 @@ export const ErrorBars = {
       .attr("y1", d => yScale(d.y - 0.2*(uncertainty * d.sigma_y)))
       .attr("x2", d => xScale(d.x + (uncertainty * d.sigma_x)))
       .attr("y2", d => yScale(d.y + 0.2*(uncertainty * d.sigma_y)))
+      .attr("opacity", d => d.selected || plot.options.show_unincluded ? opacity || 1 : 0)
       .attr("stroke-width", strokeWidth)
       .attr("stroke", d => {
         return d.selected ? fill : "gray"
@@ -93,6 +97,7 @@ export const ErrorBars = {
       .attr("y1", d => yScale(d.y - (uncertainty * d.sigma_y)))
       .attr("x2", d => xScale(d.x + 0.2 * (uncertainty * d.sigma_x)))
       .attr("y2", d => yScale(d.y - (uncertainty * d.sigma_y)))
+      .attr("opacity", d => d.selected || plot.options.show_unincluded ? opacity || 1 : 0)
       .attr("stroke-width", strokeWidth)
       .attr("stroke", d => {
         return d.selected ? fill : "gray"
@@ -103,6 +108,7 @@ export const ErrorBars = {
       .attr("y1", d => yScale(d.y - 0.2*(uncertainty * d.sigma_y)))
       .attr("x2", d => xScale(d.x - (uncertainty * d.sigma_x)))
       .attr("y2", d => yScale(d.y + 0.2*(uncertainty * d.sigma_y)))
+      .attr("opacity", d => d.selected || plot.options.show_unincluded ? opacity || 1 : 0)
       .attr("stroke-width", strokeWidth)
       .attr("stroke", d => {
         return d.selected ? fill : "gray"
